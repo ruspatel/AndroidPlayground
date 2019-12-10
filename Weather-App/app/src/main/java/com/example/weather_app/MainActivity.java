@@ -1,15 +1,18 @@
 package com.example.weather_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import android.util.Log;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,6 +60,24 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             Log.i("JSON", s);
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                String weatherInfo = jsonObject.getString("weather");
+                Log.i("Weather content", weatherInfo);
+
+                JSONArray arr = new JSONArray(weatherInfo);
+
+                for(int i=0; i < arr.length(); i++){
+                    JSONObject jsonPart = arr.getJSONObject(i);
+
+                    Log.i("main", jsonPart.getString("main"));
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -66,6 +87,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DownloadTask task = new DownloadTask();
-        task.execute("https://api.mapbox.com/geocoding/v5/mapbox.places/toront,Canada.json?access_token=pk.eyJ1IjoicnVzcGF0ZWwiLCJhIjoiY2szM2V1MWVlMHUyNDNvazNkNXhsb2JrYyJ9.UDAYGOlItoCYAyr0n3LRFA");
+        task.execute("http://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&APPID=bf58619abfa156050b2f8b2cf2f40f6e");
     }
 }
