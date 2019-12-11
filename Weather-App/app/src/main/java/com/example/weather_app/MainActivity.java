@@ -92,6 +92,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DownloadTask task = new DownloadTask();
-        task.execute("http://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&APPID=bf58619abfa156050b2f8b2cf2f40f6e");
+        task.execute("http://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=bf58619abfa156050b2f8b2cf2f40f6e");
     }
 }
