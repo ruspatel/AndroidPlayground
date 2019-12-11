@@ -18,7 +18,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     //Async task - runs on background thread
-    public class DownloadTask extends AsyncTask<String, Void, String> {
+    public class DownloadTask extends AsyncTask<String,Void,String> {
 
 
         @Override
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read();
 
+
                 while(data != -1){
                     char current = (char) data;
                     result += current;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e){
                 e.printStackTrace();
+//                System.out.println("returning null from exception");
                 return null;
             }
 
@@ -59,24 +61,27 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            Log.i("JSON", s);
+//            Log.i("JSON", s);
+//            System.out.println(s);
 
-//            try {
-//                JSONObject jsonObject = new JSONObject(s);
-//                String weatherInfo = jsonObject.getString("weather");
-//                Log.i("Weather content", weatherInfo);
-//
-//                JSONArray arr = new JSONArray(weatherInfo);
-//
-//                for(int i=0; i < arr.length(); i++){
-//                    JSONObject jsonPart = arr.getJSONObject(i);
-//
-//                    Log.i("main", jsonPart.getString("main"));
-//                }
-//
-//            }catch(Exception e){
-//                e.printStackTrace();
-//            }
+
+            try {
+                JSONObject jsonObject = new JSONObject(s);
+                String weatherInfo = jsonObject.getString("weather");
+                Log.i("Weather content", weatherInfo);
+
+                JSONArray arr = new JSONArray(weatherInfo);
+
+                for(int i=0; i < arr.length(); i++){
+                    JSONObject jsonPart = arr.getJSONObject(i);
+
+                    Log.i("main",jsonPart.getString("main"));
+                    Log.i("description",jsonPart.getString("description"));
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
 
         }
     }
