@@ -61,22 +61,22 @@ public class MainActivity extends AppCompatActivity {
 
             Log.i("JSON", s);
 
-            try {
-                JSONObject jsonObject = new JSONObject(s);
-                String weatherInfo = jsonObject.getString("weather");
-                Log.i("Weather content", weatherInfo);
-
-                JSONArray arr = new JSONArray(weatherInfo);
-
-                for(int i=0; i < arr.length(); i++){
-                    JSONObject jsonPart = arr.getJSONObject(i);
-
-                    Log.i("main", jsonPart.getString("main"));
-                }
-
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+//            try {
+//                JSONObject jsonObject = new JSONObject(s);
+//                String weatherInfo = jsonObject.getString("weather");
+//                Log.i("Weather content", weatherInfo);
+//
+//                JSONArray arr = new JSONArray(weatherInfo);
+//
+//                for(int i=0; i < arr.length(); i++){
+//                    JSONObject jsonPart = arr.getJSONObject(i);
+//
+//                    Log.i("main", jsonPart.getString("main"));
+//                }
+//
+//            }catch(Exception e){
+//                e.printStackTrace();
+//            }
 
         }
     }
