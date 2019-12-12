@@ -3,6 +3,8 @@ package com.example.weather_app;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,30 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     TextView temperatureView;
+    EditText placeText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        temperatureView = findViewById(R.id.temperatureView);
+        placeText = findViewById(R.id.placeText);
+
+
+    }
+
+    public void getWeather (View view) {
+
+        try {
+
+            DownloadTask task = new DownloadTask();
+            task.execute("http://api.openweathermap.org/data/2.5/weather?q=" + placeText.getText().toString() + "&units=metric&APPID=bf58619abfa156050b2f8b2cf2f40f6e");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
     //Async task - runs on background thread
@@ -93,16 +119,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        temperatureView = findViewById(R.id.temperatureView);
-
-        DownloadTask task = new DownloadTask();
-//        task.execute("http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1");
-        task.execute("http://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=bf58619abfa156050b2f8b2cf2f40f6e");
-
-    }
 }
