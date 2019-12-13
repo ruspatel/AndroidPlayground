@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -94,25 +95,36 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(s);
 
-                String weatherInfo = jsonObject.getString("main");
-                String temp = jsonObject.getJSONObject("main").getString("temp");
-
+                String weatherInfo = jsonObject.getString("weather");
 
                 Log.i("Weather content", weatherInfo);
-                Log.i("temp", temp);
 
                 JSONArray arr = new JSONArray(weatherInfo);
 
-//                for (int i=0; i < arr.length(); i++) {
-//                    JSONObject jsonPart = arr.getJSONObject(i);
-//
-//                    Log.i("main",jsonPart.getString("humidity"));
-//                    Log.i("description",jsonPart.getString("temp"));
-//                }
+                String message = "";
+                String temp = jsonObject.getJSONObject("main").getString("temp");
 
-                temperatureView.setText(temp);
+                for (int i=0; i < arr.length(); i++) {
+                    JSONObject jsonPart = arr.getJSONObject(i);
+
+                    String main = jsonPart.getString("main");
+                    String description = jsonPart.getString("description");
+
+                    if (!main.equals("") && !description.equals("")) {
+                        message += main + ": " + description + "\r\n";
+                    }
+                }
+
+                if (!message.equals("")) {
+                    temperatureView.setText(temp);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
+                }
 
             } catch (Exception e) {
+
+                Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
+
                 e.printStackTrace();
             }
 
