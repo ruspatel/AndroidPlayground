@@ -44,13 +44,11 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             DownloadTask task = new DownloadTask();
-            task.execute("http://api.openweathermap.org/data/2.5/weather?q=" + placeText.getText().toString() + "&units=metric&APPID=bf58619abfa156050b2f8b2cf2f40f6e");
+            task.execute("https://cloud.iexapis.com/stable/stock/" + searchTextView.getText().toString() + "/quote?token=pk_91c14a83883f423cb192797c34b930f9");
         }catch (Exception e){
             e.printStackTrace();
 
         }
-
-
     }
 
 
