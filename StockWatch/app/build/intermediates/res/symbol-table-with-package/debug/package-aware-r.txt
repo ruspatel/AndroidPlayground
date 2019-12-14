@@ -831,6 +831,7 @@ id src_over
 id standard
 id start
 id stockDisplay
+id stockPriceButton
 id submenuarrow
 id submit_area
 id tabMode

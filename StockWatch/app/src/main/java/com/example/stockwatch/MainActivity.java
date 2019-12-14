@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +22,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView searchTextView;
+    EditText searchTextView;
     TextView stockDisplay;
 
     private static final String[] COUNTRIES = {"Afghanistan", "Albania", "Algeria", "Andorra", "Angola"};
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     result += current;
                     data = reader.read();
                 }
+                Log.i("result", result);
 
                 return result;
 
@@ -95,7 +97,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(s);
 
-                String currentPrice = jsonObject.getString("latestPrice");
+                Log.i("JSON string:", s);
+
+                double  currentPriceDouble = jsonObject.getDouble("latestPrice");
+                String currentPrice = Double.toString(currentPriceDouble);
 
                 Log.i("Current Stock Price", currentPrice);
 
