@@ -21,7 +21,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    AutoCompleteTextView searchTextView;
+    TextView searchTextView;
     TextView stockDisplay;
 
     private static final String[] COUNTRIES = {"Afghanistan", "Albania", "Algeria", "Andorra", "Angola"};
@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AutoCompleteTextView editText = findViewById(R.id.searchTextView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, COUNTRIES);
-
-        editText.setAdapter(adapter);
+//        AutoCompleteTextView editText = findViewById(R.id.searchTextView);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, COUNTRIES);
+//
+//        editText.setAdapter(adapter);
     }
 
     public void getCurrentPrice (View view){
