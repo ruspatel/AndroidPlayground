@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     if (!main.equals("") && !description.equals("")) {
                         message += main + ": " + description + "\r\n";
                     }
-                }
+                }u
 
                 if (!message.equals("")) {
                     temperatureView.setText(temp);
