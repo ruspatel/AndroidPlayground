@@ -104,18 +104,26 @@ public class MainActivity extends AppCompatActivity {
                 String message = "";
                 String temp = jsonObject.getJSONObject("main").getString("temp");
 
-//                if (true) {
-//                    temperatureView.setText(temp);
-//                } else {
-//                    Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
-//                }
-//
-                temperatureView.setText(temp);
+                for (int i=0; i < arr.length(); i++) {
+                    JSONObject jsonPart = arr.getJSONObject(i);
 
+                    String main = jsonPart.getString("main");
+                    String description = jsonPart.getString("description");
+
+                    if (!main.equals("") && !description.equals("")) {
+                        message += main + ": " + description + "\r\n";
+                    }
+                }
+
+                if (!message.equals("")) {
+                    temperatureView.setText(temp);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
+                }
 
             } catch (Exception e) {
 
-//                Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
 
                 e.printStackTrace();
             }
