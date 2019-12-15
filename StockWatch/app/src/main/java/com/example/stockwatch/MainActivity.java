@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        searchTextView = findViewById(R.id.searchTextView);
+        stockDisplay = findViewById(R.id.stockDisplay);
+
 //        AutoCompleteTextView editText = findViewById(R.id.searchTextView);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, COUNTRIES);
 //
