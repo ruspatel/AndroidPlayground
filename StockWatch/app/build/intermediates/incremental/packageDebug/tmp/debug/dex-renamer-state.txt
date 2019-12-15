@@ -1,4 +1,4 @@
-#Sat Dec 14 21:39:25 EST 2019
+#Sat Dec 14 22:07:37 EST 2019
 base.0=/Users/rushil/AndroidStudioProjects/AppPlayground/StockWatch/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

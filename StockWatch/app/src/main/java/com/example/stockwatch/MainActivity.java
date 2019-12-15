@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
             }catch (Exception e){
                 e.printStackTrace();
-//                System.out.println("returning null from exception");
                 return null;
 
             }
@@ -109,28 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
                 stockDisplay.setText(currentPrice);
 
-
-//                JSONArray arr = new JSONArray(weatherInfo);
-//
-//                String message = "";
-//                String temp = jsonObject.getJSONObject("main").getString("temp");
-//
-//                for (int i=0; i < arr.length(); i++) {
-//                    JSONObject jsonPart = arr.getJSONObject(i);
-//
-//                    String main = jsonPart.getString("main");
-//                    String description = jsonPart.getString("description");
-//
-//                    if (!main.equals("") && !description.equals("")) {
-//                        message += main + ": " + description + "\r\n";
-//                    }
-//                }u
-//
-//                if (!message.equals("")) {
-//                    temperatureView.setText(temp);
-//                } else {
-//                    Toast.makeText(getApplicationContext(),"Could not find weather :(",Toast.LENGTH_SHORT).show();
-//                }
 
             } catch (Exception e) {
 
