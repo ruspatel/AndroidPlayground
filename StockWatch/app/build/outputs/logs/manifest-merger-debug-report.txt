@@ -69,7 +69,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/rush
 	android:roundIcon
 		ADDED from /Users/rushil/AndroidStudioProjects/AppPlayground/StockWatch/app/src/main/AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from /Users/rushil/AndroidStudioProjects/AppPlayground/StockWatch/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /Users/rushil/AndroidStudioProjects/AppPlayground/StockWatch/app/src/main/AndroidManifest.xml:12:9-39
 	android:allowBackup
 		ADDED from /Users/rushil/AndroidStudioProjects/AppPlayground/StockWatch/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme
