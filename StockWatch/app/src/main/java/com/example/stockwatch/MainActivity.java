@@ -1,18 +1,16 @@
 package com.example.stockwatch;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText searchTextView;
     TextView stockDisplay;
-    
+
     private static String apiUrl = "https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_91c14a83883f423cb192797c34b930f9";
 
     @Override
@@ -99,12 +97,23 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("JSON string:", s);
 
-                double  currentPriceDouble = jsonObject.getDouble("latestPrice");
+                double currentPriceDouble = jsonObject.getDouble("latestPrice");
+                double lastPriceDouble = jsonObject.getDouble("previousClose");
+
+                //Set value to string in order to display it within text view
                 String currentPrice = Double.toString(currentPriceDouble);
 
                 Log.i("Current Stock Price", currentPrice);
 
-                stockDisplay.setText(currentPrice);
+                if(lastPriceDouble > currentPriceDouble){
+                    stockDisplay.setText(currentPrice);
+                    stockDisplay.setTextColor(Color.parseColor("#FF5733"));
+                    Log.i("last > current", Double.toString(lastPriceDouble));
+                }else{
+                    stockDisplay.setText(currentPrice);
+                    stockDisplay.setTextColor(Color.parseColor("#00ff00"));
+
+                }
 
 
             } catch (Exception e) {
