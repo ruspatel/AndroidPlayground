@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     EditText searchTextView;
     TextView stockDisplay;
 
+    //Need to create a instance of String class to use in autocompletetextview
+    private static String[] stockNames = new String[]{
+            "America,", "Canada", "Brazil", "India"
+    };
+
     private static String apiUrl = "https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_91c14a83883f423cb192797c34b930f9";
 
     @Override
@@ -30,13 +37,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stockNames);
+
+        autoCompleteTextView.setAdapter(adapter);
+
         searchTextView = findViewById(R.id.searchTextView);
         stockDisplay = findViewById(R.id.stockDisplay);
 
-//        AutoCompleteTextView editText = findViewById(R.id.searchTextView);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, COUNTRIES);
-//
-//        editText.setAdapter(adapter);
+
     }
 
     public void getCurrentPrice (View view){
