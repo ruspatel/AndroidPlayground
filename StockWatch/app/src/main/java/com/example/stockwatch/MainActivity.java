@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText searchTextView;
     TextView stockDisplay;
-
-    private static final String[] COUNTRIES = {"Afghanistan", "Albania", "Algeria", "Andorra", "Angola"};
-
+    
     private static String apiUrl = "https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_91c14a83883f423cb192797c34b930f9";
 
     @Override
