@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +21,13 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText searchTextView;
+//    EditText searchTextView;
     TextView stockDisplay;
+    AutoCompleteTextView autoCompleteTextView;
 
     //Need to create a instance of String class to use in autocompletetextview
     private static String[] stockNames = new String[]{
-            "America,", "Canada", "Brazil", "India"
+            "aapl", "tsla", "ba", "msft"
     };
 
     private static String apiUrl = "https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_91c14a83883f423cb192797c34b930f9";
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         autoCompleteTextView.setAdapter(adapter);
 
-        searchTextView = findViewById(R.id.searchTextView);
+//        searchTextView = findViewById(R.id.searchTextView);
         stockDisplay = findViewById(R.id.stockDisplay);
 
 
@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             DownloadTask task = new DownloadTask();
-            task.execute("https://cloud.iexapis.com/stable/stock/" + searchTextView.getText().toString() + "/quote?token=pk_91c14a83883f423cb192797c34b930f9");
+            String name = autoCompleteTextView.getText().toString();
+            Log.i("stock name", name);
+            task.execute("https://cloud.iexapis.com/stable/stock/" + name + "/quote?token=pk_91c14a83883f423cb192797c34b930f9");
         }catch (Exception e){
             e.printStackTrace();
 
@@ -117,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 if(lastPriceDouble > currentPriceDouble){
                     stockDisplay.setText(currentPrice);
                     stockDisplay.setTextColor(Color.parseColor("#FF5733"));
-                    Log.i("last > current", Double.toString(lastPriceDouble));
                 }else{
                     stockDisplay.setText(currentPrice);
                     stockDisplay.setTextColor(Color.parseColor("#00ff00"));

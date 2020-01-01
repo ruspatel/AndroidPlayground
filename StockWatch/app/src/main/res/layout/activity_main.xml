@@ -22,43 +22,32 @@
         app:layout_constraintTop_toBottomOf="@+id/stockPriceButton"
         app:layout_constraintVertical_bias="0.249" />
 
-    <EditText
-        android:id="@+id/searchTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:text="Enter Stock Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.053" />
-
     <Button
         android:id="@+id/stockPriceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="376dp"
         android:onClick="getCurrentPrice"
         android:text="What's the Price?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchTextView"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AutoCompleteTextView"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="564dp"
         android:completionThreshold="1"
         android:hint="Enter stocks"
+        android:text="Enter Stock Name"
         app:layout_constraintBottom_toTopOf="@+id/stockPriceButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchTextView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
