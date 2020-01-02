@@ -10,20 +10,43 @@ public class MyFirstGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	Texture background;
-	
+	Texture mario;
+	float velocity = 0;
+	float gravity = 0.2f;
+	float manY = 0;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 		background = new Texture("mario_background.jpg");
+		mario = new Texture("frame-1.png");
+		manY = Gdx.graphics.getHeight() / 2;
+
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(img, 0, 0);
+		batch.draw(background, 0, 0, Gdx.graphics.getWidth() / 2 - mario.getWidth() / 2, Gdx.graphics.getHeight());
+
+
+		if(Gdx.input.justTouched()){
+			velocity -= 10;
+		}
+			velocity += gravity;
+			manY -= velocity;
+
+
+		if(manY <= 0){
+			manY = 0;
+		}else if(manY > Gdx.graphics.getHeight()){
+			manY = Gdx.graphics.getHeight();
+		}
+
+
+		batch.draw(mario, Gdx.graphics.getWidth() / 2, manY);
+
 		batch.end();
 	}
 	
